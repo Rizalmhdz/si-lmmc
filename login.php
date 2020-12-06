@@ -1,6 +1,60 @@
+<?php
+session_start();
+include("koneksi.php");
+
+if(isset($_POST['login'])){
+	try
+	{
+	
+$username = $_POST['email']; //get "update_id" from index.php page through anchor tag operation and store in "$id" variable
+$password = $_POST['password'];
+$select_stmt = $db->prepare('SELECT * FROM pasien WHERE EMAIL_PASIEN =:id and PASSWORD_PASIEN =:pass'); //sql select query
+$select_stmt->bindParam(':id',$username);
+$select_stmt->bindParam(':pass',$password);
+$select_stmt->execute(); 
+
+$row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+	if(!empty($row)) { 
+		
+// $_SESSION['email'] = $username;
+// $_SESSION['pasien'] = $row['status'];
+$insertMsg="login berhasil";
+echo "<script type='text/javascript'>window.location.href = 'index.php' ; </script>";
+
+
+}
+else if ($_POST['email'] =="" || $_POST['password'] == ""){
+	$errorMsg="masukkan username dan password!";
+
+}
+
+else {
+	$errorMsg="Username atau password yang anda masukkan salah!";
+
+}
+	}
+catch(PDOException $e)
+{
+	$e->getMessage();
+}
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style type ="text/css">
+.msg{
+	left : 25%;
+	top : 25%;
+	position:fixed;
+	width:50%;
+}
+</style>
+
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,21 +79,43 @@
 <!--===============================================================================================-->
 </head>
 <body>
+
+	
 	
 	<div class="limiter">
 		<div class="container-login100" style="background-image: url('images/img-01.jpg');">
+		<div class="msg">
+         <?php
+		if(isset($errorMsg))
+		{
+			?>
+            <div class="alert alert-danger">
+            	<strong>UPS! <?php echo $errorMsg; ?></strong>
+            </div>
+            <?php
+		}
+		if(isset($insertMsg)){
+		?>
+			<div class="alert alert-success">
+				<strong>SUCCESS! <?php echo $insertMsg; ?></strong>
+			</div>
+        <?php
+		}
+		?> 
+		</div>
 			<div class="wrap-login100 p-t-190 p-b-30">
-				<form class="login100-form validate-form">
+			
+				<form method="post" class="login100-form validate-form">
+
 					<div class="login100-form-avatar">
 						<img src="images/avatar-01.png" alt="AVATAR">
 					</div>
-
 					<span class="login100-form-title p-t-20 p-b-45">
 						Login ULM clinic
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username Tidak Boleh Kosong">
-						<input class="input100" type="text" name="username" placeholder="Username">
+						<input class="input100" type="text" name="email" placeholder="email">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user"></i>
@@ -47,7 +123,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password Tidak Boleh Kosong">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock"></i>
@@ -55,7 +131,7 @@
 					</div>
 
 					<div class="container-login100-form-btn p-t-10">
-						<button class="login100-form-btn">
+						<button class="login100-form-btn" type="submit" name="login" value="LOGIN">
 							Login
 						</button>
 					</div>
