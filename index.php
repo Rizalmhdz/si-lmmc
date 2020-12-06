@@ -39,7 +39,7 @@
       <header>
          <div class="header-top wow fadeIn">
             <div class="container">
-               <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="image"></a>
+               <a class="navbar-brand" href="index.php"><img src="images/logo.png" alt="image"></a>
                
                </div>
             </div>
@@ -53,11 +53,11 @@
 				  
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
-                        <li><a class="active" href="login.html">Registrasi</a></li>
+                        <li><a class="active" href="login.php">Registrasi</a></li>
                         <li><a data-scroll href="#">Beranda</a></li>
                         <li><a data-scroll href="#about">Pelayanan</a></li>
                         <li><a data-scroll href="#doctors">Dokter</a></li>
-                        <li><a data-scroll href="data dokter dan riwayat/data1.html">Riwayat Pengobatan</a></li>
+                        <li><a data-scroll href="data dokter dan riwayat/data1.php">Riwayat Pengobatan</a></li>
                         <li><a data-scroll href="#price">Info</a></li>
 
 						    </ul>
@@ -245,7 +245,7 @@
                         <div class="col-md-4">    
                         <div class="pricing-table-sign-up">
                            <div class="pricing-table-sign-up">
-                              <a href="data dokter dan riwayat/data.html" data-scroll="" class="btn btn-light btn-radius btn-brd grd1 effect-1">Lihat Data Dokter</a>
+                              <a href="data dokter dan riwayat/data.php" data-scroll="" class="btn btn-light btn-radius btn-brd grd1 effect-1">Lihat Data Dokter</a>
                            </div>
                         </div>
 
@@ -278,7 +278,7 @@
                                     <p><strong>Pelayanan untuk masyarakat umum bersama dr. Rezi</strong><br>Melayani di hari Senin dan Selasa</p>
                                  </div>
                                  <div class="pricing-table-sign-up">
-                                    <a href="index.html" data-scroll="" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a>
+                                    <a href="index.php" data-scroll="" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a>
                                  </div>
                               </div>
                            </div>
@@ -299,7 +299,7 @@
                                     <p><strong>Pelayanan untuk Mahasiswa(i) ULM bersama dr. Rezi dan dr.Rohmah</strong><br>Melayani di hari Senin - Jum'at</p>
                                  </div>
                                  <div class="pricing-table-sign-up">
-                                    <a href="index.html" data-scroll="" class="btn btn-light btn-radius btn-brd grd1 effect-1">Ajukan Sekarang</a>
+                                    <a href="index.php" data-scroll="" class="btn btn-light btn-radius btn-brd grd1 effect-1">Ajukan Sekarang</a>
                                  </div>
                               </div>
                            </div>
@@ -317,7 +317,7 @@
                                     <p><strong>Pelayanan untuk Dosen dan Staf Kepengurusan ULM bersama dr. Rohmah dan dr. Siti</strong><br> Melayani di hari Senin, Rabu, Jum'at dan Sabtu</p>
                                  </div>
                                  <div class="pricing-table-sign-up">
-                                    <a href="index.html" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a>
+                                    <a href="index.php" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a>
                                  </div>
                               </div>
                            </div>

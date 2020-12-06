@@ -72,9 +72,9 @@ http://www.tooplate.com/view/2098-health
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="login.html" class="smoothScrl">Login</a></li>
+                         <li><a href="login.php" class="smoothScrl">Login</a></li>
                          <li><a href="#top" class="smoothScroll">Beranda</a></li>
-                         <li><a href="admin.html" class="smoothScroll">Profile</a></li>
+                         <li><a href="admin.php" class="smoothScroll">Profile</a></li>
                          <li><a href="#team" class="smoothScroll">Data Dokter</a></li>
                          <li><a href="#news" class="smoothScroll">Data Pasien</a></li>
                          <li><a href="#about" class="smoothScroll">Pengajuan Pergantian Jadwal</a></li>
@@ -224,12 +224,12 @@ http://www.tooplate.com/view/2098-health
                     <div class="col-md-4 col-sm-6">
                          <!-- NEWS THUMB -->
                          <div class="news-thumb wow fadeInUp" data-wow-delay="0.4s">
-                              <a href="news-detail.html">
+                              <a href="news-detail.php">
                                    <img src="images/news-image1.jpg" class="img-responsive" alt="">
                               </a>
                               <div class="news-info">
                                    <span>29 Januari 2021</span>
-                                   <h3><a href="news-detail.html">Erika Maulidiya</a></h3>
+                                   <h3><a href="news-detail.php">Erika Maulidiya</a></h3>
                                    <p>Perut Sakit</p>
                                    <div class="author">
                                         <img src="images/b.png" class="img-responsive" alt="">
@@ -245,12 +245,12 @@ http://www.tooplate.com/view/2098-health
                     <div class="col-md-4 col-sm-6">
                          <!-- NEWS THUMB -->
                          <div class="news-thumb wow fadeInUp" data-wow-delay="0.6s">
-                              <a href="news-detail.html">
+                              <a href="news-detail.php">
                                    <img src="images/news-image2.jpg" class="img-responsive" alt="">
                               </a>
                               <div class="news-info">
                                    <span>20 Februari 2021</span>
-                                   <h3><a href="news-detail.html">Muhammad Rizal</a></h3>
+                                   <h3><a href="news-detail.php">Muhammad Rizal</a></h3>
                                    <p>Demam</p>
                                    <div class="author">
                                         <img src="images/a.png" class="img-responsive" alt="">
@@ -266,12 +266,12 @@ http://www.tooplate.com/view/2098-health
                     <div class="col-md-4 col-sm-6">
                          <!-- NEWS THUMB -->
                          <div class="news-thumb wow fadeInUp" data-wow-delay="0.8s">
-                              <a href="news-detail.html">
+                              <a href="news-detail.php">
                                    <img src="images/news-image3.jpg" class="img-responsive" alt="">
                               </a>
                               <div class="news-info">
                                    <span>3 Juni 2021</span>
-                                   <h3><a href="news-detail.html">Muhammad Alkaff</a></h3>
+                                   <h3><a href="news-detail.php">Muhammad Alkaff</a></h3>
                                    <p>FLU</p>
                                    <div class="author">
                                         <img src="images/b.png" class="img-responsive" alt="">

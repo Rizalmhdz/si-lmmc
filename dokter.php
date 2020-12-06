@@ -39,14 +39,14 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="dokter.html">Hello Dokter</a></h1>
+      <h1 class="logo mr-auto"><a href="dokter.php">Hello Dokter</a></h1>
   
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="login.html">Login</a></li>
+          <li class="active"><a href="login.php">Login</a></li>
           <li><a href="#">Beranda</a></li>
-          <li><a href="dokter.html">Profile</a></li>
+          <li><a href="dokter.php">Profile</a></li>
           <li><a href="#services">Pasien</a></li>
           
 
@@ -83,7 +83,7 @@
                 <br>Dan jika anda ingin mengubah jadwal praktek dapat sesegeranya menghubungi admin. Terima Kasih.
               </p>
               <div class="text-center">
-                <a href="index.html" class="more-btn">Klik disini<i class="bx bx-chevron-right"></i></a>
+                <a href="index.php" class="more-btn">Klik disini<i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
