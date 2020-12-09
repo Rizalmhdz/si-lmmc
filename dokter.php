@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("koneksi.php");
+if($_SESSION['user']!=3){
+   echo "<script type='text/javascript'>window.location.href = 'login.php' ; </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +52,7 @@
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="login.php">Login</a></li>
+          <li class="active"><a href="logout.php">Logout</a></li>
           <li><a href="#">Beranda</a></li>
           <li><a href="dokter.php">Profile</a></li>
           <li><a href="#services">Pasien</a></li>

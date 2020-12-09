@@ -5,22 +5,48 @@ include("../koneksi.php");
 if(isset($_POST['submit'])){
 	try
 	{
+
+        $gender = "";
+        $agama = "";
+        $gol_darah = "";
+
 	
 $nama_lengkap = $_POST['nama_lengkap']; //get "update_id" from index.php page through anchor tag operation and store in "$id" variable
 $email = $_POST['email'];
 $tempat_lahir = $_POST['tempat_lahir'];
 $tanggal_lahir = $_POST['tanggal_lahir'];
 $tanggal_masuk =  $_POST['tanggal_masuk'];
-$gender = $_POST['gender'];
-$agama = $_POST['agama'];
+
+
 $instansi = $_POST['instansi'];
-$gol_darah = $_POST['gol_darah'];
+
 $no_hp = $_POST['no_hp'];
 $no_ktp = $_POST['no_ktp'];
 $no_bpjs = $_POST['no_bpjs'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 
+if (!isset($_POST['agama'])) {
+
+    $agama = " ";
+}
+else{
+    $agama = $_POST['agama'];
+}
+if (!isset($_POST['gender'])) {
+
+    $gender = " ";
+}
+else{
+    $gender = $_POST['gender'];
+}
+if (!isset($_POST['gol_darah'])) {
+
+   $gol_darah = " ";
+}
+else{
+    $gol_darah = $_POST['gol_darah'];
+}
 
 $select_stmt = $db->prepare('SELECT * FROM user WHERE username =:id'); //sql select query
 $select_stmt->bindParam(':id',$username);
@@ -41,7 +67,7 @@ $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
     else {
         
         $insert_stmt=$db->prepare('INSERT INTO user(username,password,email,level)
-                                VALUES(:fusername,:fpassword,:femail,1)'); //sql insert query					
+                                VALUES(:fusername,:fpassword,:femail,2)'); //sql insert query					
         $insert_stmt->bindParam(':fusername',$username);	
         $insert_stmt->bindParam(':fpassword',$password);	 
         $insert_stmt->bindParam(':femail',$email);
@@ -65,7 +91,7 @@ $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
             $insert_stmt->execute();
             
-            $_SESSION['akun'] = 1;
+            $_SESSION['user'] = 2;
             $insertMsg="Akun berhasil dibuat!"; //execute query success message
             echo	"<script type='text/javascript'>window.location.href = '../index.php' ; </script>";//refresh 3 second and redirect to index.php page
         }
@@ -93,7 +119,7 @@ catch(PDOException $e)
     <!-- Title Page-->
     <title>Register</title>
 
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css"> -->
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -114,6 +140,9 @@ catch(PDOException $e)
 	position:fixed;
 	width:50%;
 }
+.alert{padding:.75rem 1.25rem;margin-bottom:1rem;border:1px solid transparent;border-radius:.25rem}
+.alert-success{color:#155724;background-color:#d4edda;border-color:#c3e6cb}
+.alert-danger{color:#721c24;background-color:#f8d7da;border-color:#f5c6cb}
 </style>
 </head>
 
@@ -266,7 +295,7 @@ catch(PDOException $e)
                                         <input class="input--style-4" type="password" name="password">
                                     </div>
                                 </div>
-                                <input type="hidden" name="tanggal_masuk" value="<?php echo date("d-m-Y"); ?>">
+                                <input type="hidden" name="tanggal_masuk" value="<?php echo date("y-m-d"); ?>">
                                 
                         </div>
                         <div class="p-t-15">

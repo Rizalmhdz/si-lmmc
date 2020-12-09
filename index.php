@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("koneksi.php");
+if($_SESSION['user']!=2){
+   echo "<script type='text/javascript'>window.location.href = 'login.php' ; </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <!-- Basic -->
@@ -53,7 +61,7 @@
 				  
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
-                        <li><a class="active" href="login.php">Registrasi</a></li>
+                        <li><a class="active" href="logout.php">LOG OUT</a></li>
                         <li><a data-scroll href="#">Beranda</a></li>
                         <li><a data-scroll href="#about">Pelayanan</a></li>
                         <li><a data-scroll href="#doctors">Dokter</a></li>
