@@ -13,14 +13,15 @@ $select_stmt->bindParam(':id',$username);
 $select_stmt->bindParam(':pass',$password);
 $select_stmt->execute(); 
 
-$row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+
 
 	if(!empty($row)) { 
 		
-// $_SESSION['email'] = $username;
-// $_SESSION['pasien'] = $row['status'];
-$insertMsg="login berhasil";
-echo "<script type='text/javascript'>window.location.href = 'index.php' ; </script>";
+	//$select_stmt = $db->prepare('SELECT * FROM pasien WHERE EMAIL_PASIEN =:id and PASSWORD_PASIEN =:pass');
+	$insertMsg="login berhasil";
+	if($row[id])
+	echo "<script type='text/javascript'>window.location.href = 'index.php' ; </script>";
 
 
 }

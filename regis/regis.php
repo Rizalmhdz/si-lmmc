@@ -1,53 +1,75 @@
 <?php
-include("../koneksi.php");
 session_start();
-if(isset($_POST['sign'])){
+include("../koneksi.php");
+
+if(isset($_POST['submit'])){
 	try
 	{
 	
-$full_name = $_POST['full_name']; //get "update_id" from index.php page through anchor tag operation and store in "$id" variable
+$nama_lengkap = $_POST['nama_lengkap']; //get "update_id" from index.php page through anchor tag operation and store in "$id" variable
 $email = $_POST['email'];
-$tgl_lahir = $_POST['tgl_lahir'];
+$tempat_lahir = $_POST['tempat_lahir'];
+$tanggal_lahir = $_POST['tanggal_lahir'];
+$tanggal_masuk =  $_POST['tanggal_masuk'];
 $gender = $_POST['gender'];
+$agama = $_POST['agama'];
+$instansi = $_POST['instansi'];
+$gol_darah = $_POST['gol_darah'];
+$no_hp = $_POST['no_hp'];
+$no_ktp = $_POST['no_ktp'];
+$no_bpjs = $_POST['no_bpjs'];
+$username = $_POST['username'];
 $password = $_POST['password'];
-$nomer_wa = $_POST['nomer_wa'];
-$status = $_POST['status'];
 
-$select_stmt = $db->prepare('SELECT * FROM pasien WHERE email =:id'); //sql select query
-$select_stmt->bindParam(':id',$email);
+
+$select_stmt = $db->prepare('SELECT * FROM user WHERE username =:id'); //sql select query
+$select_stmt->bindParam(':id',$username);
 $select_stmt->execute(); 
 
 $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 
 	if(!empty($row)) { 
-$errorMsg="Email telah digunakan oleh orang lain.";
+    $errorMsg="Email telah digunakan oleh orang lain.";
 
-}
-else if ($_POST['full_name'] =="" || $_POST['email'] == "" || $_POST['tgl_lahir'] == "" || $_POST['gender'] == ""  || $_POST['password'] == ""  || $_POST['nomer_wa'] == ""  || $_POST['gender'] == "status"){
-	$errorMsg="data tidak boleh kosong!";
-
-}
-
-else {
-	
-    $insert_stmt=$db->prepare('INSERT INTO pasien(NAMA_PASIEN,EMAIL_PASIEN,TANGGAL_LAHIR,JENIS_KELAMIN,PASSWORD_PASIEN,NO_HP_PASIEN)
-                            VALUES(:ffull_name,:femail,:ftgl_lahir,:fgender,:fpassword,:fnomer_wa)'); //sql insert query					
-    $insert_stmt->bindParam(':ffull_name',$full_name);	
-    $insert_stmt->bindParam(':femail',$email);	  //bind all parameter 
-    $insert_stmt->bindParam(':ftgl_lahir',$tgl_lahir);
-    $insert_stmt->bindParam(':fgender',$gender);
-    $insert_stmt->bindParam(':fpassword',$password);
-    $insert_stmt->bindParam(':fnomer_wa',$nomer_wa);
-    if($insert_stmt->execute())
-    {
-        
-		$_SESSION['user'] = 2;
-		
-$_SESSION['email'] = $email;
-        $insertMsg="Akun berhasil dibuat!"; //execute query success message
-	echo	"<script type='text/javascript'>window.location.href = 'index.php' ; </script>";//refresh 3 second and redirect to index.php page
     }
-}
+    else if ($nama_lengkap =="" || $email == "" || $tempat_lahir == "" || $tanggal_lahir == ""  || $agama == ""  || $gender == ""  || 
+    $instansi == "" || $gol_darah == "" || $no_hp == "" || $no_ktp == "" || $username == "" || $password == ""){
+        $errorMsg="data tidak boleh kosong!";
+
+    }
+
+    else {
+        
+        $insert_stmt=$db->prepare('INSERT INTO user(username,password,email,level)
+                                VALUES(:fusername,:fpassword,:femail,1)'); //sql insert query					
+        $insert_stmt->bindParam(':fusername',$username);	
+        $insert_stmt->bindParam(':fpassword',$password);	 
+        $insert_stmt->bindParam(':femail',$email);
+        if($insert_stmt->execute())
+        {   
+            $insert_stmt=$db->prepare('INSERT INTO pasien(username_pasien,nama_pasien,tanggal_masuk, no_hp_pasien,no_bpjs,no_ktp,tempat_lahir,tanggal_lahir,jenis_kelamin,agama,instansi, gol_darah)
+            VALUES(:username_pasien,:nama_pasien,:tanggal_masuk,:no_hp_pasien,:no_bpjs,:no_ktp,
+            :tempat_lahir,:tanggal_lahir,:jenis_kelamin,:agama,:instansi, :gol_darah)'); //sql insert query					
+            $insert_stmt->bindParam(':username_pasien',$username);	
+            $insert_stmt->bindParam(':nama_pasien', $password);	 
+            $insert_stmt->bindParam(':tanggal_masuk',$tanggal_masuk);
+            $insert_stmt->bindParam(':no_hp_pasien',$no_hp);
+            $insert_stmt->bindParam(':no_bpjs',$no_bpjs);
+            $insert_stmt->bindParam(':no_ktp',$no_ktp);
+            $insert_stmt->bindParam(':tempat_lahir',$tempat_lahir);
+            $insert_stmt->bindParam(':tanggal_lahir',$tanggal_lahir);
+            $insert_stmt->bindParam(':jenis_kelamin',$gender);
+            $insert_stmt->bindParam(':agama',$agama);
+            $insert_stmt->bindParam(':instansi',$instansi);
+            $insert_stmt->bindParam(':gol_darah',$gol_darah);
+
+            $insert_stmt->execute();
+            
+            $_SESSION['akun'] = 1;
+            $insertMsg="Akun berhasil dibuat!"; //execute query success message
+            echo	"<script type='text/javascript'>window.location.href = '../index.php' ; </script>";//refresh 3 second and redirect to index.php page
+        }
+    }
 	}
 catch(PDOException $e)
 {
@@ -71,6 +93,7 @@ catch(PDOException $e)
     <!-- Title Page-->
     <title>Register</title>
 
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -83,85 +106,171 @@ catch(PDOException $e)
 
     <!-- Main CSS-->
     <link href="css/main.css" rel="stylesheet" media="all">
+
+    <style type ="text/css">
+.msg{
+	left : 25%;
+	top : 25%;
+	position:fixed;
+	width:50%;
+}
+</style>
 </head>
 
 <body>
-    
     <div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Registration Form</h2>
+                <div class="msg">
+         <?php
+		if(isset($errorMsg))
+		{
+			?>
+            <div class="alert alert-danger">
+            	<strong>UPS! <?php echo $errorMsg; ?></strong>
+            </div>
+            <?php
+		}
+		if(isset($insertMsg)){
+		?>
+			<div class="alert alert-success">
+				<strong>SUCCESS! <?php echo $insertMsg; ?></strong>
+			</div>
+        <?php
+		}
+		?> 
+		</div>
+                    <h2 class="title">Pendaftaran</h2>
+                    
                     <form method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Nama Lengkap</label>
-                                    <input class="input--style-4" type="text" name="full_name">
+                                    <input class="input--style-4" type="text" name="nama_lengkap">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Email</label>
+                                    <label class="label">E-mail</label>
                                     <input class="input--style-4" type="email" name="email">
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Tanggal Lahir</label>
-                                    <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="tgl_lahir">
-                                        <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                               
+                                <div class="col-2">
+                                     <div class="input-group">
+                                        <label class="label">Tempat lahir</label>
+                                        <input class="input--style-4" type="text" name="tempat_lahir">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Gender</label>
-                                    <div class="p-t-10">
-                                        <label class="radio-container m-r-45">Laki - laki
-                                            <input type="radio" name="gender" value="Laki-laki" >
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <label class="radio-container">Perempuan
-                                            <input type="radio" name="gender" value="Perempuan">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </div>
+                                    
+                                <div class="col-2">
+                                    <div class="input-group">
+                                            <label class="label">Tanggal Lahir</label>
+                                            <div class="input-group-icon">
+                                                <input class="input--style-4 js-datepicker" type="text" name="tanggal_lahir">
+                                                <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                                            </div>
+                                        </div>
                                 </div>
-                            </div>
                         </div>
                         <div class="row row-space">
-                            <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password">
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Nomor HP/WA</label>
-                                    <input class="input--style-4" type="text" name="nomer_wa">
-                                </div>
-                            </div>
+                                        <label class="label">Agama</label>
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="agama">
+                                                <option disabled="disabled" selected="selected" name="agama">Pilih</option>
+                                                <option value="Islam">Islam</option>
+                                                <option value="Kristen">Kristen</option>
+                                                <option value="Katholik">Katholik</option>
+                                                <option value="Hindu">Hindu</option>
+                                                <option value="Budha">Budha</option>
+                                                <option value="Konghucu">Konghucu</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                            <label class="label">Gender</label>
+                                            <div class="p-t-10">
+                                                <label class="radio-container m-r-45">Laki - laki
+                                                    <input type="radio" name="gender" value="L">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <label class="radio-container">Perempuan
+                                                    <input type="radio" name="gender" value="P">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
                         </div>
-                        <div class="input-group">
-                            <label class="label">Keterangan/Status</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select name="status">
-                                    <option disabled="disabled" selected="selected">Pilih</option>
-                                    <option>Pasien (Mahasiswa, Dosen, Umum)</option>
-                                    <option>Dokter</option>
-                                    <option>Apoteker</option>
-                                    <option>Admin</option>
-                                </select>
-                                <div class="select-dropdown"></div>
-                            </div>
+                        <div class="row row-space">
+                                <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">Instansi</label>
+                                            <input class="input--style-4" type="text" name="instansi">
+                                        </div>
+                                    </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Golongan Darah</label>
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="gol_darah">
+                                                <option disabled="disabled" selected="selected">Pilih</option>
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="AB">AB</option>
+                                                <option value="O">O</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row row-space">
+                                <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">No HP</label>
+                                            <input class="input--style-4" type="text" name="no_hp">
+                                        </div>
+                                </div>
+                        </div>
+                        <div class="row row-space">
+                                <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">No KTP</label>
+                                            <input class="input--style-4" type="text" name="no_ktp">
+                                        </div>
+                                    </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">No BPJS</label>
+                                        <input class="input--style-4" type="text" name="no_bpjs">
+                                    </div>
+                                </div>
+                        </div>
+                        <div class="row row-space">
+                                <div class="col-2">
+                                        <div class="input-group">
+                                            <label class="label">Username</label>
+                                            <input class="input--style-4" type="text" name="username">
+                                        </div>
+                                    </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <label class="label">Password</label>
+                                        <input class="input--style-4" type="password" name="password">
+                                    </div>
+                                </div>
+                                <input type="hidden" name="tanggal_masuk" value="<?php echo date("d-m-Y"); ?>">
+                                
                         </div>
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit" name="sign" value="Sign Up">Submit</button>
+                            <button class="btn btn--radius-2 btn--blue" type="submit" name="submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -174,13 +283,4 @@ catch(PDOException $e)
     <!-- Vendor JS-->
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
-
-    <!-- Main JS-->
-    <script src="js/global.js"></script>
-
-</body>
-
-</html>
-<!-- end document-->
-
+    <script src="ven
