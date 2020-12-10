@@ -5,7 +5,6 @@ if($_SESSION['user']!=3){
    echo "<script type='text/javascript'>window.location.href = 'login.php' ; </script>";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -47,21 +46,18 @@ if($_SESSION['user']!=3){
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo mr-auto"><a href="dokter.php">Hello Dokter</a></h1>
+      <h1 class="logo mr-auto"><a href="dokter.html">Hello Dokter</a></h1>
   
 
       <nav class="nav-menu d-none d-lg-block">
         <ul>
-          <li class="active"><a href="logout.php">Logout</a></li>
+        <li class="active"><a href="logout.php">Logout</a></li>
           <li><a href="#">Beranda</a></li>
-          <li><a href="dokter.php">Profile</a></li>
-          <li><a href="#services">Pasien</a></li>
-          
-
+          <li><a href="Rekaman Medis/Rekaman Medis.html">Rekaman Medis Pasien</a></li> 
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="#appointment" class="appointment-btn scrollto">Hubungi Admin</a>
+      <a href="CRUD DATA PASIEN/index.php" class="appointment-btn scrollto">Tambah Rekaman Medis Pasien</a>
 
     </div>
   </header><!-- End Header -->
@@ -91,7 +87,7 @@ if($_SESSION['user']!=3){
                 <br>Dan jika anda ingin mengubah jadwal praktek dapat sesegeranya menghubungi admin. Terima Kasih.
               </p>
               <div class="text-center">
-                <a href="index.php" class="more-btn">Klik disini<i class="bx bx-chevron-right"></i></a>
+                <a href="index.html" class="more-btn">Klik disini<i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>
@@ -133,164 +129,6 @@ if($_SESSION['user']!=3){
 
       </div>
     </section><!-- End Why Us Section -->
-
-    
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container">
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="count-box">
-              <i class="icofont-doctor-alt"></i>
-              <span data-toggle="counter-up">3</span>
-              <p>Doctor di klinik ULM</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
-            <div class="count-box">
-              <i class="icofont-patient-bed"></i>
-              <span data-toggle="counter-up">70</span>
-              <p>Pasein yang Konsul</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="icofont-laboratory"></i>
-              <span data-toggle="counter-up">56</span>
-              <p>Pasein yang berobat</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
-            <div class="count-box">
-              <i class="icofont-patient-bed"></i>
-              <span data-toggle="counter-up">0</span>
-              <p>Pasein yang dirujuk</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Counts Section -->
-
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Pasien</h2>
-          <p>Berikut Pasien yang mengirimkan pengajuan gejala kepada anda.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-drug"></i></div>
-              <h4><a href="">Erika Maulidiya
-                <br>SELASA, WAKTU 10:00
-              </a></h4>
-              <p>Perut saya sakit dok beberapa hari ini, sudah minum obat yang dibeli diapotek ternyata engga mempan :"(
-                <br>Selasa 29 januari 2021
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-drug"></i></div>
-              <h4><a href="">Dimas
-                <br> JUM'AT, WAKTU 16:00
-              </a></h4>
-              <p>Tangan saya sering kesemutan
-                <br> Jum'at 2 Februari 2021
-              </p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
-            <div class="icon-box">
-              <div class="icon"><i class="icofont-drug"></i></div>
-              <h4><a href="">Salim
-                <br> SENIN, WAKTU 08:00
-              </a></h4>
-              <p>Senin 4 maret 2021
-                <br>Tenggorokan saya sakit dok. Sudah pernah pergi ke klinik dekat rumah ternyata gak ada perubahan
-        
-              </p>
-            </div>
-          </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Pergantian Jadwal</h2>
-          <p>Anda dapat mengubah jadwal anda apabila jadwal sebelumnya terpakai untuk kegiatan anda lainnya</p>
-        </div>
-
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
-          <div class="form-row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Nama Lengkap" data-rule="minlen:4" data-msg="Nama tidak boleh kosong">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Email" data-rule="email" data-msg="Email tidak boleh kosong">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Nomor Telephone" data-rule="minlen:4" data-msg="Nomor telephone tidak boleh kosong">
-              <div class="validate"></div>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-md-4 form-group">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Jadwal" data-rule="minlen:4" data-msg="Silahkan masukkan jadwal baru anda">
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <select name="department" id="department" class="form-control">
-                <option value="">Alasan Pergantian Jadwal </option>
-                <option value="Department 1">Kesibukan di Rumah sakit/klinik lain</option>
-                <option value="Department 2">Sakit</option>
-                <option value="Department 3">Ke Luar kota/negeri</option>
-              </select>
-              <div class="validate"></div>
-            </div>
-            <div class="col-md-4 form-group">
-              <select name="doctor" id="doctor" class="form-control">
-                <option value="">Pilih Dokter</option>
-                <option value="Doctor 1">dr. Rezi</option>
-                <option value="Doctor 2">dr. Siti</option>
-                <option value="Doctor 3">dr. Rohmah</option>
-              </select>
-              <div class="validate"></div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <textarea class="form-control" name="message" rows="5" placeholder="Pesan"></textarea>
-            <div class="validate"></div>
-          </div>
-          <div class="mb-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Pengiriman Pergantian Jadwal Berhasil. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Kirim ke Admin</button></div>
-        </form>
-
-      </div>
-    </section><!-- End Appointment Section -->
-
-   
           <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container-fluid">
