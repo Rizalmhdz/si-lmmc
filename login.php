@@ -32,7 +32,7 @@ $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 		
 	//$select_stmt = $db->prepare('SELECT * FROM user WHERE EMAIL_PASIEN =:id and PASSWORD_PASIEN =:pass');
 	$insertMsg="login berhasil";
-	
+	$_SESSION['username'] = $row['username'];
 	if($row['level']==1){
 		$_SESSION['user'] = 1; //level admin
 	echo "<script type='text/javascript'>window.location.href = 'admin.php' ; </script>";
@@ -45,10 +45,10 @@ $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 		$_SESSION['user'] = 3; //level dokter
 	echo "<script type='text/javascript'>window.location.href = 'dokter.php' ; </script>";
 	}
-	// else if($row['level']==4){
-	// 	$_SESSION['user'] = 4; //level apoteker
-	// echo "<script type='text/javascript'>window.location.href = 'index.php' ; </script>";
-	// }
+	else if($row['level']==4){
+		$_SESSION['user'] = 4; //level apoteker
+	echo "<script type='text/javascript'>window.location.href = 'APOTEK/apotek.php' ; </script>";
+	}
 
 
 }

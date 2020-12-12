@@ -5,7 +5,6 @@ if($_SESSION['user']!=2){
    echo "<script type='text/javascript'>window.location.href = 'login.php' ; </script>";
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
    <!-- Basic -->
@@ -61,7 +60,7 @@ if($_SESSION['user']!=2){
 				  
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
-                        <li><a class="active" href="logout.php">LOG OUT</a></li>
+                        <li><a class="active" href="logout.php">Logout</a></li>
                         <li><a data-scroll href="#">Beranda</a></li>
                         <li><a data-scroll href="#about">Pelayanan</a></li>
                         <li><a data-scroll href="#doctors">Dokter</a></li>
@@ -286,7 +285,7 @@ if($_SESSION['user']!=2){
                                     <p><strong>Pelayanan untuk masyarakat umum bersama dr. Rezi</strong><br>Melayani di hari Senin dan Selasa</p>
                                  </div>
                                  <div class="pricing-table-sign-up">
-                                    <a href="index.php" data-scroll="" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a>
+                                    <!-- <a href="index.html" type="hide"data-scroll="" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a> -->
                                  </div>
                               </div>
                            </div>
@@ -307,7 +306,7 @@ if($_SESSION['user']!=2){
                                     <p><strong>Pelayanan untuk Mahasiswa(i) ULM bersama dr. Rezi dan dr.Rohmah</strong><br>Melayani di hari Senin - Jum'at</p>
                                  </div>
                                  <div class="pricing-table-sign-up">
-                                    <a href="index.php" data-scroll="" class="btn btn-light btn-radius btn-brd grd1 effect-1">Ajukan Sekarang</a>
+                                    <!-- <a href="index.html" data-scroll="" class="btn btn-light btn-radius btn-brd grd1 effect-1">Ajukan Sekarang</a> -->
                                  </div>
                               </div>
                            </div>
@@ -325,7 +324,7 @@ if($_SESSION['user']!=2){
                                     <p><strong>Pelayanan untuk Dosen dan Staf Kepengurusan ULM bersama dr. Rohmah dan dr. Siti</strong><br> Melayani di hari Senin, Rabu, Jum'at dan Sabtu</p>
                                  </div>
                                  <div class="pricing-table-sign-up">
-                                    <a href="index.php" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a>
+                                    <!-- <a href="index.html" class="btn btn-dark btn-radius btn-brd">Ajukan Sekarang</a> -->
                                  </div>
                               </div>
                            </div>

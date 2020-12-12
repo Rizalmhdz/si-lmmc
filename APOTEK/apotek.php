@@ -50,8 +50,8 @@
                 <li class="has-children">
                 <a href="#">Cetak Laporan Data Obat</a>
                 <ul class="dropdown">
-                        <li><a href="#">Obat Masuk</a></li>
-                        <li><a href="#">Obat Keluar</a></li>
+                        <li><a href="CETAK/obat masuk.html">Obat Masuk</a></li>
+                        <li><a href="CETAK/obat keluar.html">Obat Keluar</a></li>
               </ul>
             </nav>
           </div>

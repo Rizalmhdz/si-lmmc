@@ -18,58 +18,91 @@ require_once ('operation.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     <link rel="icon" type="image/png" href="fevicon.ico.png"/>
     <!-- Custom stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="templatemo_main.css">
     
 
 </head>
 <body>
 
 <main>
+
+<div class="grid-container">
+          <ol class="breadcrumb">
     <div class="container text-center">
         <h1 class="py-4 bg-dark text-light rounded"></i>KELOLA DATA OBAT</h1>
+          <div class="row">
+            <div class="col-md-12">
+              <form role="form" id="templatemo-preferences-form">
+                <div class="row">
+                  <div class="col-md-6 margin-bottom-15">
+                  <div class="item1">
+                    <label for="firstName" class="control-label">Nama Obat</label>
+                    <input type="text" class="form-control" id="firstName" value="Nama Obat">                  
+                  </div>
+</div>
+                  <div class="col-md-6 margin-bottom-15">
+                  <div class="item1">
+                        <label for="singleSelect">Jenis Obat</label>
+                        <select class="form-control margin-bottom-15" id="singleSelect">
+                          <option>Silahkan Pilih</option>
+                          <option>Sirup</option>
+                          <option>Salep</option>
+                          <option>Tablet</option>
+                          <option>Kapsul</option>
+                          <option>Pil</option>
+                        </select>
+                      </div>                           
+                </div>
+                <div class="col-md-6 margin-bottom-15">
+                    <label for="firstName" class="control-label">Tanggal Obat</label>
+                    <input type="text" class="form-control" id="firstName" value="Tanggal Obat">                  
+                  </div>
+                <div class="col-md-6 margin-bottom-15">
+                    <label for="firstName" class="control-label">Jumlah Obat</label>
+                    <input type="text" class="form-control" id="firstName" value="Jumlah Obat">                  
+                  </div>               
+                </div>
 
-        <div class="d-flex justify-content-center">
-            <form action="" method="post" class="w-50">
-                <div class="pt-2">
-                    <?php inputElement("<i class='fas fa-id-badge'></i>","Nama Obat", "",""); ?>
+                <div class="col-md-6 margin-bottom-15">
+                <div class="item1">
+                        <label for="singleSelect">Satuan Obat</label>
+                        <select class="form-control margin-bottom-15" id="singleSelect">
+                          <option>Silahkan Pilih</option>
+                          <option>Botol</option>
+                          <option>Strip</option>
+                          <option>Pcs</option>
+                          <option>Pack</option>
+                        </select>  
+</div>                       
                 </div>
-               
-                <div class="pt-2">
-                    <?php inputElement("<i class='fas fa-book'></i>","Jenis Obat", "",""); ?>
-                </div>
-                <div class="pt-2">
-                    <?php inputElement("<i class='fas fa-book'></i>","Tanggal Obat", "",""); ?>
-                </div>
-                <div class="pt-2">
-                    <?php inputElement("<i class='fas fa-book'></i>","Jumlah Obat", "",""); ?>
-                </div>
-                <div class="row pt-2">
-                    <div class="col">
-                        <?php inputElement("<i class='fas fa-people-carry'></i>","Satuan Obat", "",""); ?>
-                    </div>
-                    <div class="col">
-                        <?php inputElement("<i class='fas fa-dollar-sign'></i>","Harga Obat", "",""); ?>
-                    </div>
-                    <div class="col">
-                        <?php inputElement("<i class='fas fa-book'></i>","Keterangan", "",""); ?>
-                    </div>
-                   
-                </div>
-                <div class="d-flex justify-content-center">
-                    <button>Simpan</button>
-                        <?php buttonElement("btn-create","btn btn-success","<i class='fas fa-plus'></i>","create","data-toggle='tooltip' data-placement='bottom' title='Create'"); ?>
-                        <?php buttonElement("btn-read","btn btn-primary","<i class='fas fa-sync'></i>","read","data-toggle='tooltip' data-placement='bottom' title='Read'"); ?>
-                        <?php buttonElement("btn-update","btn btn-light border","<i class='fas fa-pen-alt'></i>","update","data-toggle='tooltip' data-placement='bottom' title='Update'"); ?>
-                        <?php buttonElement("btn-delete","btn btn-danger","<i class='fas fa-trash-alt'></i>","delete","data-toggle='tooltip' data-placement='bottom' title='Delete'"); ?>
-                    
-            
-                        <?php deleteBtn();?>
-                </div>
+                  <div class="col-md-6 margin-bottom-15">
+                    <label for="firstName" class="control-label">Harga Obat</label>
+                    <input type="text" class="form-control" id="firstName" value="Ketik Harga Obat">                  
+                  </div>               
+              </div>
+           
+                  <div class="col-md-6 margin-bottom-15">
+                  <div class="item1">
+                    <label for="lastName" class="control-label">Keterangan</label>
+                    <input type="text" class="form-control" id="firstName" value="Ketikan Keterangan obat">                  
+                  </div>
+            </form>
+          </div>
+</ol>
+        </div>
+      </div>
+</div>
             </form>
         </div>
+        
 
         <!-- Bootstrap table  -->
-        <div class="O"
+        <center>
+        <?php buttonElement("btn-create","btn btn-success","<i class='fas fa-plus'></i>","create","data-toggle='tooltip' data-placement='bottom' title='Insert'"); ?>
+        <?php buttonElement("btn-read","btn btn-primary","<i class='fas fa-save'></i>","read","data-toggle='tooltip' data-placement='bottom' title='Save'"); ?>
+        <br>
+        <br>
         <div class="d-flex table-data">
             <table class="table table-striped table-dark">
                 <thead class="thead-dark">
@@ -82,18 +115,26 @@ require_once ('operation.php');
                         <th>Satuan</th>
                         <th>Harga</th>
                         <th>Keterangan</th>
-                        <th>Edit<i class='fas fa-pencil-square-o'></i></th>
+                        <th>Aksi</th>
+
                     </tr>
         <tr>
           <td>01</td>
           <td>My Lanta</td>
           <td>Cair</td>
-          <td>22 Januari 2020</td>
+          <td>22-01-2020</td>
           <td>3</td>
           <td>kotak</td>
           <td>15000</td>
           <td>Ada</td>
-          <td><i class="fas fa-pen-alt"style="font-size:18px"></td>
+          <td> 
+
+
+                        <?php buttonElement("btn-update","btn btn-light border","<i class='fas fa-pen-alt'></i>","update","data-toggle='tooltip' data-placement='bottom' title='Update'"); ?>
+                        <?php buttonElement("btn-delete","btn btn-danger","<i class='fas fa-trash-alt'></i>","delete","data-toggle='tooltip' data-placement='bottom' title='Delete'"); ?>
+                        <?php deleteBtn();?>
+                        <?php buttonElement("btn-read","btn btn-primary","<i class='fas fa-save'></i>","read","data-toggle='tooltip' data-placement='bottom' title='Save'"); ?></td>
+                        
         </tr>
                 </thead>
 
@@ -122,7 +163,6 @@ require_once ('operation.php');
                        }
                    }
 
-
                    ?>
                 </tbody>
             </table>
@@ -130,9 +170,9 @@ require_once ('operation.php');
 
 
     </div>
-</main>
-
-
+</main><script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/templatemo_script.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

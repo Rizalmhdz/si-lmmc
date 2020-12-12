@@ -73,7 +73,7 @@ $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
         $insert_stmt->bindParam(':femail',$email);
         if($insert_stmt->execute())
         {   
-            $insert_stmt=$db->prepare('INSERT INTO pasien(username_pasien,nama_pasien,tanggal_masuk, no_hp_pasien,no_bpjs,no_ktp,tempat_lahir,tanggal_lahir,jenis_kelamin,agama,instansi, gol_darah)
+            $insert_stmt=$db->prepare('INSERT INTO pasien(username,nama_pasien,tanggal_masuk, no_hp_pasien,no_bpjs,no_ktp,tempat_lahir,tanggal_lahir,jenis_kelamin,agama,instansi, gol_darah)
             VALUES(:username_pasien,:nama_pasien,:tanggal_masuk,:no_hp_pasien,:no_bpjs,:no_ktp,
             :tempat_lahir,:tanggal_lahir,:jenis_kelamin,:agama,:instansi, :gol_darah)'); //sql insert query					
             $insert_stmt->bindParam(':username_pasien',$username);	
