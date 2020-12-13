@@ -2,7 +2,7 @@
 session_start();
 include("../koneksi.php");
 if($_SESSION['user']!=2){
-   echo "<script type='text/javascript'>window.location.href = 'login.php' ; </script>";
+   echo "<script type='text/javascript'>window.location.href = '../login.php' ; </script>";
 }
 
 $select_stmt = $db->prepare('SELECT * FROM jadwal_dokter'); //sql select query
@@ -46,8 +46,11 @@ $select_stmt->execute();
 				<div class="table100 ver6 m-b-110">
 					<table data-vertable="ver6">
 						<thead>
+						<tr class="row100 head" >
+						<th colspan="8"><h1 style="text-align:center;padding:10px;background-color:#333333;color:white;">JADWAL DOKTER</h1>
+					</th></tr>
+						<tr class="row100 head">
 							<tr class="row100 head">
-								<h1>JADWAL DOKTER </h1>
 								<th class="column100 column1" data-column="column1"></th>
 								<th class="column100 column2" data-column="column2">SENIN</th>
 								<th class="column100 column3" data-column="column3">SELASA</th>

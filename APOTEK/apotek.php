@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("../koneksi.php");
+if($_SESSION['user']!=4){
+   echo "<script type='text/javascript'>window.location.href = '../login.php' ; </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,27 +47,25 @@
         <div class="d-flex align-items-center justify-content-between">
           <div class="logo">
             <div class="site-logo">
-              <a href="index.html" class="js-logo-clone">LIFE CARE</a>
+              <a href="#" class="js-logo-clone">LIFE CARE</a>
             </div>
           </div>
           <div class="main-nav d-none d-lg-block">
             <nav class="site-navigation text-right text-md-center" role="navigation">
               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="active"><a href="apotek.html">Beranda</a></li>
-                <li><a href="CRUD DATA OBAT/index.php">Data Obat</a></li>
+                <li class="active"><a href="apotek.php">Beranda</a></li>
+                <li><a href="CRUD DATA OBAT/data obat.php">Data Obat</a></li>
                 <li class="has-children">
                 <a href="#">Cetak Laporan Data Obat</a>
                 <ul class="dropdown">
-                        <li><a href="CETAK/obat masuk.html">Obat Masuk</a></li>
-                        <li><a href="CETAK/obat keluar.html">Obat Keluar</a></li>
+                        <li><a href="CETAK/obat masuk.php">Obat Masuk</a></li>
+                        <li><a href="CETAK/obat keluar.php">Obat Keluar</a></li>
               </ul>
             </nav>
           </div>
           <div class="icons">
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="../logout.php" class="icons-btn d-inline-block">Logout</a>
             </a>
-            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span
-                class="icon-menu"></span></a>
           </div>
         </div>
       </div>
@@ -73,7 +79,7 @@
               <h2 class="sub-title">Effective Medicine, New Medicine Everyday</h2>
               <h1>Welcome To APOTEK LIFE CARE</h1>
               <p>
-                <a href="CRUD DATA OBAT/index.php" class="btn btn-primary px-5 py-3">Lihat Data Obat</a>
+                <a href="CRUD DATA OBAT/data obat.php" class="btn btn-primary px-5 py-3">Lihat Data Obat</a>
               </p>
             </div>
           </div>
