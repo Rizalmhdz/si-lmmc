@@ -1,0 +1,54 @@
+body{
+    position: fixed;
+}
+.gambar_belakang{
+    position: relative;
+}
+.no_id{
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    left: 264px;
+    top: 115px;
+    color: #030303;
+}
+
+.nama_anggota{
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    left: 264px;
+    top: 146px;
+    color: #030303;
+}
+
+.nama_admin{
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    left: 264px;
+    top: 172px;
+    color: #030303;
+}
+
+.total{
+    position: absolute;
+    font-size: 23px;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    left: 139px;
+    top: 291px;
+    color: #030303;
+}
+
+#date{
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    left: 574px;
+    top: 233px;
+    color: #030303;
+}
+
+.koma{
+    position: absolute;
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    left: 515px;
+    top: 233px;
+    color: #030303;
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Dashboard</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width">        
+  <link rel="stylesheet" href="css/templatemo_main.css">
+<!-- 
+Dashboard Template 
+http://www.templatemo.com/preview/templatemo_415_dashboard
+-->
+</head>
+<body>
+  <div id="main-wrapper">
+    <div class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <div class="logo"><h1>Admin</h1></div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> 
+      </div>   
+    </div>
+    <div class="template-page-wrapper">
+      <div class="navbar-collapse collapse templatemo-sidebar">
+        <ul class="templatemo-sidebar-menu">
+          <li><a href="admin.html"><i class="fa fa-home"></i>Data Pengunjung</a></li>
+          <li><a href="admin_pasien.html"><i class="fa fa-users"></i><span class="badge pull-right">Baru</span> Pasien</a></li>
+          <li class="active"><a href="admin_dokter.html"><i class="fa fa-users"></i><span class="badge pull-right">Baru</span>Dokter</a></li>
+          <li><a href="admin_pembayaran.html"><i class="fa fa-users"></i><span class="badge pull-right">Baru</span>Pembayaran</a></li>
+          <li><a href="admin_kartu_anggota.html"><i class="fa fa-cog"></i>Cetak Kartu Anggota</a></li>
+          <li><a href="javascript:;" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Keluar</a></li>
+        </ul>
+      </div><!--/.navbar-collapse -->
+
+      <div class="templatemo-content-wrapper">
+        <div class="templatemo-content">
+          <ol class="breadcrumb">
+            <li><a href="index.html">Admin Panel</a></li>
+            <li class="active">Dokter</li>
+          </ol>
+          <h1>Manajemen Data Dokter</h1>
+          <p>Admin Dapat Menambah, Mengubah dan Menghapus data Dokter</p>
+
+          <div class="row margin-bottom-30">
+            <div class="col-md-12">
+              <ul class="nav nav-pills">
+                <li class="active"><a href="#">Dokter Hari ini<span class="badge">2</span></a></li>
+                <li><a href="#">Semua Dokter<span class="badge">3</span></a></li>
+              </ul>          
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col-md-12">
+              <div class="btn-group pull-right" id="templatemo_sort_btn">
+                <button type="button" class="btn btn-default">Tambah Data</button>
+                <button type="button" class="btn btn-default">Urutkan</button>
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                  <span class="caret"></span>
+                  <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Baru-Lama</a></li>
+                  <li><a href="#">Lama-baru</a></li>
+                  <li><a href="#">A-Z</a></li>
+                </ul>
+                
+              </div>
+              <div class="table-responsive">
+                <h4 class="margin-bottom-15">Data Pasien</h4>
+                
+                <table class="table table-striped table-hover table-bordered">
+                  <thead>
+                    <tr>
+                      <th>NO</th>
+                      <th>ID</th>
+                      <th>Nama</th>
+                      <th>Alamat</th>
+                      <th>No HP</th>
+                      <th>Spesialis</th>
+                      <th>Username</th>
+                      <th>Password</th>
+                      <th>Ubah</th>
+                      <th>Hapus</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>BD72</td>
+                        <td>Rezi</td>
+                        <td>Kalimantan</td>
+                        <td>000000</td>
+                        <td>Penyakit dalam</td>
+                        <td>Username</td>
+                        <td>Password</td>
+                        <td><a href="#" class="btn btn-default">Ubah</a></td> 
+                        <td><a href="#" class="btn btn-link">Hapus</a></td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>KJD6</td>
+                        <td>Siti Rohmah</td>
+                        <td>Kalimantan</td>
+                        <td>000000</td>
+                        <td>Penyakit dalam</td>
+                        <td>Username</td>
+                        <td>Password</td>
+                        <td><a href="#" class="btn btn-default">Ubah</a></td> 
+                        <td><a href="#" class="btn btn-link">Hapus</a></td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <ul class="pagination pull-right">
+                <li class="disabled"><a href="#">&laquo;</a></li>
+                <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">2 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">3 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">4 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">5 <span class="sr-only">(current)</span></a></li>
+                <li><a href="#">&raquo;</a></li>
+              </ul>  
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Tutup</span></button>
+              <h4 class="modal-title" id="myModalLabel">Apakah anda yakin ingin keluar?</h4>
+            </div>
+            <div class="modal-footer">
+              <a href="sign-in.html" class="btn btn-primary">YA</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">TIDAK</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="templatemo-footer">
+        <div class="templatemo-copyright">
+          <p>Copyright &copy;  2020 KLINIK ULM</p>
+        </div>
+      </footer>
+    </div>
+</div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/templatemo_script.js"></script>
+  </body>
+</html>
