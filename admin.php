@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("koneksi.php");
+if($_SESSION['user']!=1){
+   echo "<script type='text/javascript'>window.location.href = 'login.php' ; </script>";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +80,7 @@ http://www.tooplate.com/view/2098-health
                <!-- MENU LINKS -->
                <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                         <li><a href="login.php" class="smoothScrl">Login</a></li>
+                         <li><a href="logout.php" class="smoothScrl">Logout</a></li>
                          <li><a href="#top" class="smoothScroll">Beranda</a></li>
                          <li><a href="admin.php" class="smoothScroll">Profile</a></li>
                          <li><a href="#team" class="smoothScroll">Data Dokter</a></li>

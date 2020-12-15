@@ -2,7 +2,7 @@
 $db_host="localhost"; //localhost server 
 $db_user="root"; //database username
 $db_password=""; //database password   
-$db_name="klinik"; //database name
+$db_name="lmmc"; //database name
 
 try
 {

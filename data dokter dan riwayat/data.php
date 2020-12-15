@@ -1,3 +1,16 @@
+<?php
+session_start();
+include("../koneksi.php");
+if($_SESSION['user']!=2){
+   echo "<script type='text/javascript'>window.location.href = '../login.php' ; </script>";
+}
+
+$select_stmt = $db->prepare('SELECT * FROM jadwal_dokter'); //sql select query
+
+$select_stmt->execute(); 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,8 +46,11 @@
 				<div class="table100 ver6 m-b-110">
 					<table data-vertable="ver6">
 						<thead>
+						<tr class="row100 head" >
+						<th colspan="8"><h1 style="text-align:center;padding:10px;background-color:#333333;color:white;">JADWAL DOKTER</h1>
+					</th></tr>
+						<tr class="row100 head">
 							<tr class="row100 head">
-								<h1>JADWAL DOKTER </h1>
 								<th class="column100 column1" data-column="column1"></th>
 								<th class="column100 column2" data-column="column2">SENIN</th>
 								<th class="column100 column3" data-column="column3">SELASA</th>
@@ -46,38 +62,37 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="row100">
-								<td class="column100 column1" data-column="column1">Dr.Rezi</td>
-								<td class="column100 column2" data-column="column2">8:00 AM</td>
-								<td class="column100 column3" data-column="column3">--</td>
-								<td class="column100 column4" data-column="column4">--</td>
-								<td class="column100 column5" data-column="column5">8:00 AM</td>
-								<td class="column100 column6" data-column="column6">--</td>
-								<td class="column100 column7" data-column="column7">5:00 PM</td>
-								<td class="column100 column8" data-column="column8">8:00 AM</td>
-							</tr>
+						<?php 
+						
+						while ($row = $select_stmt->fetch())
+									{
+										$b = $row['id_dokter'];
+										$A = $db->prepare("SELECT nama_dokter FROM dokter WHERE id_dokter = $b");
+										$A->execute();
+										$rowA = $A->fetch(PDO::FETCH_ASSOC);
 
+										$tanggal = $row['hari_kerja'];
+										$day = date('D', strtotime($tanggal));
+										$dayList = array(
+											'Sun' => 'Minggu',
+											'Mon' => 'Senin',
+											'Tue' => 'Selasa',
+											'Wed' => 'Rabu',
+											'Thu' => 'Kamis',
+											'Fri' => 'Jumat',
+											'Sat' => 'Sabtu'
+										);?>
 							<tr class="row100">
-								<td class="column100 column1" data-column="column1">Dr. Siti</td>
-								<td class="column100 column2" data-column="column2">--</td>
-								<td class="column100 column3" data-column="column3">5:00 PM</td>
-								<td class="column100 column4" data-column="column4">5:00 PM</td>
-								<td class="column100 column5" data-column="column5">--</td>
-								<td class="column100 column6" data-column="column6">9:00 AM</td>
-								<td class="column100 column7" data-column="column7">--</td>
-								<td class="column100 column8" data-column="column8">--</td>
+							<td class="column100 column1" data-column="column1"><?php echo $rowA['nama_dokter'];?></td>
+								<td class="column100 column2" data-column="column2"><?php echo $dayList[$day] == "Senin" ? $row['jam_kerja'] : "--"; ?> </td>
+								<td class="column100 column3" data-column="column3"><?php echo $dayList[$day] == "Selasa" ? $row['jam_kerja'] : "--"; ?></td>
+								<td class="column100 column4" data-column="column4"><?php echo $dayList[$day] == "Rabu" ? $row['jam_kerja'] : "--"; ?></td>
+								<td class="column100 column5" data-column="column5"><?php echo $dayList[$day] == "Kamis" ? $row['jam_kerja'] : "--"; ?></td>
+								<td class="column100 column6" data-column="column6"><?php echo $dayList[$day] == "Jumat" ? $row['jam_kerja'] : "--"; ?></td>
+								<td class="column100 column7" data-column="column7"><?php echo $dayList[$day] == "Sabtu" ? $row['jam_kerja'] : "--"; ?></td>
+								<td class="column100 column8" data-column="column8"><?php echo $dayList[$day] == "Minggu" ? $row['jam_kerja'] : "--"; ?></td>
 							</tr>
-
-							<tr class="row100">
-								<td class="column100 column1" data-column="column1">Dr. Rohmah</td>
-								<td class="column100 column2" data-column="column2">9:00 AM</td>
-								<td class="column100 column3" data-column="column3">--</td>
-								<td class="column100 column4" data-column="column4">--</td>
-								<td class="column100 column5" data-column="column5">--</td>
-								<td class="column100 column6" data-column="column6">--</td>
-								<td class="column100 column7" data-column="column7">2:00 PM</td>
-								<td class="column100 column8" data-column="column8">8:00 AM</td>
-							</tr>
+									<?php } ?>
 						</tbody>
 					</table>
 				</div>
