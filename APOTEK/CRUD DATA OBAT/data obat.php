@@ -12,9 +12,38 @@ $get_id->execute();
 $tabel_apoteker = $get_id->fetch();
 $id_apoteker = $tabel_apoteker['id_apoteker'];
 
-$select = $db->prepare('SELECT * FROM obat');
+$jumlah_data = 5;
+$awalan = 0;
+
+
+if(!isset($_REQUEST['halaman_id'])){
+  $halaman_id = 1;
+  $awalan = 0;
+
+}
+else{
+  $halaman_id = $_REQUEST['halaman_id'];
+  $awalan = ($halaman_id - 1) * $jumlah_data ;
+ 
+}
+
+//menghitung jumlah baris pada tabel obat
+$hitung_row = $db->prepare('SELECT COUNT(*) AS "jumlah_row" FROM obat');
+$hitung_row->execute();
+$rowObat =  $hitung_row->fetch();
+
+//menghitung jumlah halaman
+$jumlah_halaman = ceil($rowObat['jumlah_row'] / $jumlah_data);
+
+//set limit pada tabel obat untuk ditampilkan di tabel
+$select = $db->prepare('SELECT * FROM obat ORDER BY tanggal_obat ASC LIMIT '.$awalan.','.$jumlah_data);
 $select->execute();
 
+
+$jumlah_number = 2; // Tentukan jumlah link number sebelum dan sesudah page yang aktif
+$start_number = ($halaman_id > $jumlah_number)? $halaman_id - $jumlah_number : 1; // Untuk awal link number
+$end_number = ($halaman_id < ($jumlah_halaman - $jumlah_number))? $halaman_id + $jumlah_number : $jumlah_halaman; // Untuk akhir link number
+//kondisi jika tombol update di request
 
 if(isset($_REQUEST['update_id'])){
   $update_id = $_REQUEST['update_id'];
@@ -26,6 +55,7 @@ if(isset($_REQUEST['update_id'])){
   $rowUpdate = $updateView->fetch();
 }
 
+//kondisi jika tombol tambah di request
 if(isset($_REQUEST['tambah'])){
   try
 	{
@@ -284,17 +314,68 @@ if(isset($_REQUEST['save'])){
         </div>
       </div>
 </div>
-        
 
         <!-- Bootstrap table  -->
+
+    
+
         <center>
         <?php
+        // for($i=1;$i<=$jumlah_halaman;$i++){
+        //    echo '<a href="data obat.php?halaman_id='.$i.'">'.$i.'</a>';
+        // }
+
         if(!isset($_REQUEST['update_id'])) { ?> <button style= "margin-top:1px;" class="btn btn-success" name="tambah"><i class='fas fa-plus'></i></button>
         <?php }
         else{ ?><button style= "margin-top:1px;" class="btn btn-info" name="save"><i class='fas fa-save'></i></button>
         <?php } ?>
         </form><br>
         <br>
+            <ul class="pagination">
+        <!-- LINK FIRST AND PREV -->
+        <?php
+        if($halaman_id == 1){ // Jika page adalah page ke 1, maka disable link PREV
+        }else if($halaman_id == 2){?>
+        <li><a href="data obat.php?halaman_id=1">&laquo;</a></li>
+        <?php
+        }else{ // Jika page bukan page ke 1
+          $link_prev = ($halaman_id > 2)? $halaman_id - 1 : 1;
+        ?>
+          <li><a href="data obat.php?halaman_id=1">First</a></li>
+          <li><a href="data obat.php?halaman_id=<?php echo $link_prev; ?>">&laquo;</a></li>
+        <?php
+        }
+        ?>
+        
+        <!-- LINK NUMBER -->
+        <?php
+
+        for($i = $start_number; $i <= $end_number; $i++){
+          $link_active = ($halaman_id == $i)? ' class="active"' : '';
+        ?>
+          <li<?php echo $link_active; ?>><a href="data obat.php?halaman_id=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+        <?php
+        }
+        ?>
+        
+        <!-- LINK NEXT AND LAST -->
+        <?php
+        // Jika page sama dengan jumlah page, maka disable link NEXT nya
+        // Artinya page tersebut adalah page terakhir 
+        if($halaman_id == $jumlah_halaman){ // Jika page terakhir
+        }else if($halaman_id == $jumlah_halaman - 1){ // Jika page terakhir
+          $link_next = ($halaman_id < $jumlah_halaman)? $halaman_id + 1 : $jumlah_halaman;?>
+           <li><a href="data obat.php?halaman_id=<?php echo $link_next; ?>">&raquo;</a></li>
+            <?php
+        }else{ // Jika Bukan page terakhir
+          $link_next = ($halaman_id < $jumlah_halaman)? $halaman_id + 1 : $jumlah_halaman;
+        ?>
+          <li><a href="data obat.php?halaman_id=<?php echo $link_next; ?>">&raquo;</a></li>
+          <li><a href="data obat.php?halaman_id=<?php echo $jumlah_halaman; ?>">Last</a></li>
+        <?php
+        }
+        ?>
+      </ul>
         <div class="d-flex table-data">
             <table class="table table-striped table-dark">
                 <thead class="thead-dark">

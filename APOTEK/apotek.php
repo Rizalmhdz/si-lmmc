@@ -58,8 +58,8 @@ if($_SESSION['user']!=4){
                 <li class="has-children">
                 <a href="#">Cetak Laporan Data Obat</a>
                 <ul class="dropdown">
-                        <li><a href="CETAK/obat masuk.php">Obat Masuk</a></li>
-                        <li><a href="CETAK/obat keluar.php">Obat Keluar</a></li>
+                        <li><a href="CETAK/report masuk.php">Obat Masuk</a></li>
+                        <li><a href="CETAK/report keluar.php">Obat Keluar</a></li>
               </ul>
             </nav>
           </div>
