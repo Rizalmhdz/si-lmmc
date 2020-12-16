@@ -43,7 +43,7 @@ $result = $stmt->fetchAll();
                     foreach($result as $row) {	?>
                       <tr>
                           <?php
-                          $stmt1 = $pdo_conn->prepare('SELECT * FROM user where username="'.$row["username_admin"].'"');
+                          $stmt1 = $pdo_conn->prepare('SELECT * FROM user where username="'.$row["username"].'"');
                           $stmt1->execute();
                           $result1 = $stmt1->fetchAll();
                           ?>

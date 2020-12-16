@@ -2,14 +2,14 @@
     $stmt3 = $pdo_conn->prepare("SELECT * FROM dokter where id_dokter=". $_GET["id"]);
     $stmt3->execute();
     $result3 = $stmt3->fetchAll();
-    $stmt4 = $pdo_conn->prepare("SELECT * FROM user where username='". $result3[0]['username_dokter']."'");
+    $stmt4 = $pdo_conn->prepare("SELECT * FROM user where username='". $result3[0]['username']."'");
     $stmt4->execute();
     $result4 = $stmt4->fetchAll();
     if(isset($_POST['submit'])){
       $insertMsg="Data berhasil diubah!.";
       $pdo_statement = $pdo_conn->prepare("update user set password='" . $_POST[ 'password' ]. "', email='" . $_POST[ 'email' ]. "' where username='" . $result4[0]['username']."'");
       $result = $pdo_statement->execute();
-      $pdo_statement1 = $pdo_conn->prepare("update dokter set nama_dokter='" . $_POST[ 'nama' ]. "', no_hp_dokter=" . $_POST[ 'hp' ]. ", alamat_dokter='" . $_POST[ 'alamat' ]. "', spesialis='" . $_POST[ 'spesialis' ]. "' where username_dokter='" . $result4[0]['username']."'");
+      $pdo_statement1 = $pdo_conn->prepare("update dokter set nama_dokter='" . $_POST[ 'nama' ]. "', no_hp_dokter=" . $_POST[ 'hp' ]. ", alamat_dokter='" . $_POST[ 'alamat' ]. "', spesialis='" . $_POST[ 'spesialis' ]. "' where username='" . $result4[0]['username']."'");
       $result1 = $pdo_statement1->execute();
       ?> 
       <script>

@@ -10,10 +10,10 @@ if(isset($_POST['submit'])){
       $insertMsg="Data berhasil ditambahkan!.";
       $sql = "INSERT INTO user (username, password, email, level) VALUES (:username, :password, :email, 1)";
       $stmt = $pdo_conn->prepare( $sql );
-      $sql1 = "INSERT INTO admin (username_admin, nama_admin, no_hp_admin) VALUES (:username_admin, :nama_admin, :no_hp_admin)";
+      $sql1 = "INSERT INTO admin (username, nama_admin, no_hp_admin) VALUES (:username, :nama_admin, :no_hp_admin)";
       $stmt1 = $pdo_conn->prepare( $sql1 );
       $result = $stmt->execute(array(':username' => $_POST['username'], ':password' =>$_POST['password'],':email' =>$_POST['email']));
-      $result1 = $stmt1->execute(array(':username_admin' => $_POST['username'], ':nama_admin'=> $_POST['nama'], ':no_hp_admin' => $_POST['hp']));
+      $result1 = $stmt1->execute(array(':username' => $_POST['username'], ':nama_admin'=> $_POST['nama'], ':no_hp_admin' => $_POST['hp']));
       ?> 
       <script>
       window.location="index.php?page=admin";

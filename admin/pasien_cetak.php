@@ -44,7 +44,7 @@
         </div>
         
         <div class="user_name">
-                <label for="user_name" class="username"><?php echo $result3['0']['username_pasien'];?></label>
+                <label for="user_name" class="username"><?php echo $result3['0']['username'];?></label>
         </div>
     </div>
 

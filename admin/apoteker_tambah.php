@@ -10,10 +10,10 @@ if(isset($_POST['submit'])){
       $insertMsg="Data berhasil ditambahkan!.";
       $sql = "INSERT INTO user (username, password, email, level) VALUES (:username, :password, :email, 4)";
       $stmt = $pdo_conn->prepare( $sql );
-      $sql1 = "INSERT INTO apoteker (username_apoteker, nama_apoteker, no_hp_apoteker, alamat_apoteker) VALUES (:username_apoteker, :nama_apoteker, :no_hp_apoteker, :alamat_apoteker)";
+      $sql1 = "INSERT INTO apoteker (username, nama_apoteker, no_hp_apoteker, alamat_apoteker) VALUES (:username, :nama_apoteker, :no_hp_apoteker, :alamat_apoteker)";
       $stmt1 = $pdo_conn->prepare( $sql1 );
       $result = $stmt->execute(array(':username' => $_POST['username'], ':password' =>$_POST['password'],':email' =>$_POST['email']));
-      $result1 = $stmt1->execute(array(':username_apoteker' => $_POST['username'], ':nama_apoteker'=> $_POST['nama'], ':no_hp_apoteker' => $_POST['hp'], ':alamat_apoteker' => $_POST['alamat']));
+      $result1 = $stmt1->execute(array(':username' => $_POST['username'], ':nama_apoteker'=> $_POST['nama'], ':no_hp_apoteker' => $_POST['hp'], ':alamat_apoteker' => $_POST['alamat']));
       ?> 
         <script>
                 window.location="index.php?page=apoteker";

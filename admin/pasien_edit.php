@@ -2,7 +2,7 @@
     $stmt3 = $pdo_conn->prepare("SELECT * FROM pasien where no_anggota=". $_GET["id"]);
     $stmt3->execute();
     $result3 = $stmt3->fetchAll();
-    $stmt4 = $pdo_conn->prepare("SELECT * FROM user where username='". $result3[0]['username_pasien']."'");
+    $stmt4 = $pdo_conn->prepare("SELECT * FROM user where username='". $result3[0]['username']."'");
     $stmt4->execute();
     $result4 = $stmt4->fetchAll();
 if(isset($_POST['submit'])){

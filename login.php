@@ -35,7 +35,7 @@ $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
 	$_SESSION['username'] = $row['username'];
 	if($row['level']==1){
 		$_SESSION['user'] = 1; //level admin
-	echo "<script type='text/javascript'>window.location.href = 'admin.php' ; </script>";
+	echo "<script type='text/javascript'>window.location.href = 'admin/index.php' ; </script>";
 	}
 	else if($row['level']==2){
 		$_SESSION['user'] = 2; //level pasien

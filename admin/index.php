@@ -1,3 +1,11 @@
+<?php
+session_start();
+include("fungsi/koneksi.php");
+if($_SESSION['user']!=1){
+   echo "<script type='text/javascript'>window.location.href = '../login.php' ; </script>";
+}
+?>
+
 <!DOCTYPE html>
 <head>
   <meta charset="utf-8">
@@ -7,9 +15,9 @@
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width">        
   <link rel="stylesheet" href="css/templatemo_main.css">
-    <?php
+    <!-- <?php
     include("fungsi/koneksi.php");
-    ?>
+    ?> -->
     
 </head>
 <body>

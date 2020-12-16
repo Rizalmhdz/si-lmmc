@@ -33,7 +33,7 @@
                         <input type="number" class="form-control" name="no_anggota" required value="<?php echo $result3[0]['no_anggota'];?>"> 
                         </div>                  
                         <div class="col-md-6 margin-bottom-15">
-                        <label for="id_admin">Nama Admin Penerima</label>
+                        <label for="id_admin">id Admin Penerima</label>
                         <input type="number" class="form-control" name="id_admin" required value="<?php echo $result3[0]['id_admin'];?>">   
                         </div>                                 
                 </div>

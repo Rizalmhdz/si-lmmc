@@ -5,10 +5,19 @@
     $stmt2 = $pdo_conn->prepare("SELECT * FROM admin ORDER BY id_admin DESC");
     $stmt2->execute();
     $result2 = $stmt2->fetchAll();
+
+    $username = $_SESSION['username'];
+
+    $stmt3 = $pdo_conn->prepare("SELECT * FROM admin where username='".$username."'");
+    $stmt3->execute();
+    $result3 = $stmt3->fetchAll();
+
+  
+    
     if(isset($_POST['submit'])){
       $sql = "INSERT INTO pembayaran (no_anggota, id_admin, total_pembayaran, tanggal_pembayaran) VALUES (:no_anggota, :id_admin, :total_pembayaran, CURDATE())";
       $stmt = $pdo_conn->prepare( $sql );
-      $result = $stmt->execute(array(':no_anggota' => $_POST['no_anggota'], ':id_admin' =>$_POST['id_admin'],':total_pembayaran' =>$_POST['total_pembayaran']));
+      $result = $stmt->execute(array(':no_anggota' => $_POST['no_anggota'], ':id_admin' => $result3[0]['id_admin'],':total_pembayaran' =>$_POST['total_pembayaran']));
       ?> 
         <script>
                 window.location="index.php?page=pembayaran";
@@ -30,10 +39,10 @@
                         <label for="no_anggota">No Anggota</label>
                         <input type="number" class="form-control" name="no_anggota" required > 
                         </div>                  
-                        <div class="col-md-6 margin-bottom-15">
+                        <!-- <div class="col-md-6 margin-bottom-15">
                         <label for="id_admin">Nama Admin Penerima</label>
                         <input type="number" class="form-control" name="id_admin" required > 
-                        </div>                                   
+                        </div>                                    -->
                 </div>
                 <div class="row">
                 <div class="col-md-6 margin-bottom-15">

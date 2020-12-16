@@ -10,10 +10,10 @@ if(isset($_POST['submit'])){
       $insertMsg="Data berhasil ditambahkan!.";
       $sql = "INSERT INTO user (username, password, email, level) VALUES (:username, :password, :email, 2)";
       $stmt = $pdo_conn->prepare( $sql );
-      $sql1 = "INSERT INTO pasien (username_pasien, nama_pasien, no_hp_pasien, no_bpjs, no_ktp, tempat_lahir, tanggal_lahir, jenis_kelamin, agama, instansi, gol_darah, tanggal_masuk) VALUES (:username_pasien, :nama_pasien, :no_hp_pasien, :no_bpjs, :no_ktp, :tempat_lahir, :tanggal_lahir, :jenis_kelamin, :agama, :instansi, :gol_darah, CURDATE())";
+      $sql1 = "INSERT INTO pasien (username, nama_pasien, no_hp_pasien, no_bpjs, no_ktp, tempat_lahir, tanggal_lahir, jenis_kelamin, agama, instansi, gol_darah, tanggal_masuk) VALUES (:username, :nama_pasien, :no_hp_pasien, :no_bpjs, :no_ktp, :tempat_lahir, :tanggal_lahir, :jenis_kelamin, :agama, :instansi, :gol_darah, CURDATE())";
       $stmt1 = $pdo_conn->prepare( $sql1 );
       $result = $stmt->execute(array(':username' => $_POST['username'], ':password' =>$_POST['password'],':email' =>$_POST['email']));
-      $result1 = $stmt1->execute(array(':username_pasien' => $_POST['username'], ':nama_pasien'=> $_POST['nama'], ':no_hp_pasien' => $_POST['hp'], ':no_bpjs' => $_POST['bpjs'], ':no_ktp' => $_POST['ktp'], ':tempat_lahir' => $_POST['tempat_lahir'], ':tanggal_lahir' => $_POST['tanggal_lahir'], ':jenis_kelamin' => $_POST['jk'], ':agama' => $_POST['agama'], ':instansi' => $_POST['instansi'], ':gol_darah' => $_POST['gol_darah']));
+      $result1 = $stmt1->execute(array(':username' => $_POST['username'], ':nama_pasien'=> $_POST['nama'], ':no_hp_pasien' => $_POST['hp'], ':no_bpjs' => $_POST['bpjs'], ':no_ktp' => $_POST['ktp'], ':tempat_lahir' => $_POST['tempat_lahir'], ':tanggal_lahir' => $_POST['tanggal_lahir'], ':jenis_kelamin' => $_POST['jk'], ':agama' => $_POST['agama'], ':instansi' => $_POST['instansi'], ':gol_darah' => $_POST['gol_darah']));
       ?> 
       <script>
       window.location="index.php?page=pasien";

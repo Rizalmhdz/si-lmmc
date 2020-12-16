@@ -1,7 +1,7 @@
 <?php
-session_name("verify");   //pilih session
-session_start();        //memulai session
-unset($_SESSION["verify"]);    //kosongkan session
-session_destroy();       //hapus session
+session_start();
+$_SESSION['user'] = "";
+session_destroy();
+echo "<script type='text/javascript'>window.location.href = '../login.php' ; </script>";
+
 ?>
-<script>window.location="../index.php";</script>
