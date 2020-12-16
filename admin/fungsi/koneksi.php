@@ -1,3 +1,4 @@
+
 <?php
 // $db_host="localhost"; //localhost server 
 // $db_user="root"; //database username
@@ -18,5 +19,3 @@ catch(PDOEXCEPTION $e)
 {
  $e->getMessage();
 }
-
-?>
