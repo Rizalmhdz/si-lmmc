@@ -1,5 +1,5 @@
 <?php 
-$stmt = $pdo_conn->prepare('SELECT * FROM Admin ORDER BY id_admin DESC');
+$stmt = $pdo_conn->prepare('SELECT * FROM admin ORDER BY id_admin DESC');
 $stmt->execute();
 $result = $stmt->fetchAll();
 ?>
