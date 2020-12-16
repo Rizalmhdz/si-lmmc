@@ -34,14 +34,8 @@ $result = $stmt->fetchAll();
                       <th>Nama</th>
                       <th>Tanggal Masuk</th>
                       <th>No HP</th>
-                      <th>No BPJS</th>
                       <th>No KTP</th>
-                      <th>Tempat Lahir</th>
-                      <th>Tanggal Lahir</th>
                       <th>Jenis Kelamin</th>
-                      <th>Agama</th>
-                      <th>Instansi</th>
-                      <th>Golongan Darah</th>
                       <th>Email</th>
                       <th>Username</th>
                       <th>Password</th>
@@ -61,14 +55,8 @@ $result = $stmt->fetchAll();
                           <td><?php echo $row["nama_pasien"]; ?></td>
                           <td><?php echo $row["tanggal_masuk"]; ?></td>
                           <td><?php echo $row["no_hp_pasien"]; ?></td>
-                          <td><?php echo $row["no_bpjs"]; ?></td>
                           <td><?php echo $row["no_ktp"]; ?></td>
-                          <td><?php echo $row["tempat_lahir"]; ?></td>
-                          <td><?php echo $row["tanggal_lahir"]; ?></td>
                           <td><?php echo $row["jenis_kelamin"]; ?></td>
-                          <td><?php echo $row["agama"]; ?></td>
-                          <td><?php echo $row["instansi"]; ?></td>
-                          <td><?php echo $row["gol_darah"]; ?></td>
                           <td><?php echo $result1[0]["email"]; ?></td>
                           <td><?php echo $result1[0]["username"]; ?></td>
                           <td><?php echo $result1[0]["password"]; ?></td>
