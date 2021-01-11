@@ -57,7 +57,7 @@ if($_SESSION['user']!=3){
         </ul>
       </nav><!-- .nav-menu -->
 
-      <a href="CRUD DATA PASIEN/index.php" class="appointment-btn scrollto">Tambah Rekaman Medis Pasien</a>
+      <a href="CRUD DATA PASIEN/index1.php" class="appointment-btn scrollto">Tambah Rekaman Medis Pasien</a>
 
     </div>
   </header><!-- End Header -->
@@ -87,7 +87,7 @@ if($_SESSION['user']!=3){
                 <br>Dan jika anda ingin mengubah jadwal praktek dapat sesegeranya menghubungi admin. Terima Kasih.
               </p>
               <div class="text-center">
-                <a href="index.html" class="more-btn">Klik disini<i class="bx bx-chevron-right"></i></a>
+                <a href="#" class="more-btn">Klik disini<i class="bx bx-chevron-right"></i></a>
               </div>
             </div>
           </div>

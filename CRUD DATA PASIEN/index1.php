@@ -1,7 +1,10 @@
 <?php
 
 require_once ('component.php');
-include 'koneksi1.php';
+include ("koneksi1.php");
+
+$result = $db->query('SELECT * FROM rekam_medis');
+
 if(isset($_POST['submit'])){
     $id_dokter = htmlentities($_POST['id_dokter']);
     $no_anggota = htmlentities($_POST['no_anggota']);
@@ -20,26 +23,6 @@ if(isset($_POST['submit'])){
     $query->bindParam(":keluhan", $keluhan);
     $query->bindParam(":diagnosa", $diagnosa);
     $query->execute();
-}
-try {
-   // buat koneksi dengan database
-   $dbh = new PDO('mysql:host=localhost;dbname=db_klinik', "root", "");
-  
-   // set error mode
-   $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-  
-   // jalankan query
-   $result = $dbh->query('SELECT * FROM rekam_medis');
-  
-   // tampilkan data
- 
-   // hapus koneksi
-   $dbh = null;
-}
-catch (PDOException $e) {
-   // tampilkan pesan kesalahan jika koneksi gagal
-   print "Koneksi atau query bermasalah: " . $e->getMessage() . "<br/>";
-   die();
 }
 ?>
 
@@ -122,14 +105,7 @@ catch (PDOException $e) {
                         <th>Action</th>
                     </tr>
         <?php
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=db_klinik', "root", "");
-  
-            // set error mode
-            $dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-           
-            // jalankan query
-            $result = $dbh->query('SELECT * FROM rekam_medis');
+            $result = $db->query('SELECT * FROM rekam_medis');
            
             // tampilkan data
             while($row = $result->fetch()) {?>
@@ -149,17 +125,7 @@ catch (PDOException $e) {
             
             
             <?php
-            }
-          
-            // hapus koneksi
-            $dbh = null;
-         }
-         catch (PDOException $e) {
-            // tampilkan pesan kesalahan jika koneksi gagal
-            print "Koneksi atau query bermasalah: " . $e->getMessage() . "<br/>";
-            die();
-         }
-        ?>
+            }?>
         <tr>
         </tr>
                 </thead> 
