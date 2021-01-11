@@ -125,7 +125,7 @@ if(isset($_REQUEST['save'])){
     $update->bindParam(":fjumlah_obat", $jumlah_obat);
     $update->bindParam(":fharga_obat", $harga_obat);
     $update->bindParam(":fketerangan", $keterangan);
-    $update->bindParam(":id_obat", $update_id);
+    $update->bindParam(":id_obat",  $_GET['update_id']);
     $update->execute();
     
     !isset($_REQUEST['update_id']);
