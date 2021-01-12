@@ -99,9 +99,9 @@ if(isset($_POST['submit'])){
                     <th>No Anggota</th>
                     <th>Id Obat</th>
                         <th>Tanggal Periksa</th>
+                        <th>Tekanan Darah</th>
                         <th>Keluhan</th>
                         <th>Diagnosa</th>
-                        <th>Tekanan Darah</th>
                         <th>Action</th>
                     </tr>
         <?php
